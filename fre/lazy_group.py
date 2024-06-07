@@ -1,7 +1,15 @@
+'''
+    this file defines the LazyGroup class
+    looks like it's something to do with click interfacing
+'''
+
 import importlib
 import click
 
 class LazyGroup(click.Group):
+    '''
+        write this doct string TODO
+    '''
     def __init__(self, *args, lazy_subcommands=None, **kwargs):
         super().__init__(*args, **kwargs)
         # lazy_subcommands is a map of the form:
@@ -35,4 +43,3 @@ class LazyGroup(click.Group):
                 "a non-command object"
             )
         return cmd_object
-
