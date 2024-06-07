@@ -1,4 +1,7 @@
-# not sure if these are still needed to follow Pythonic conventions, the code seems to work even when these are removed/commented out
+''' 
+    not sure if these are still needed to follow Pythonic conventions
+    the code seems to work even when these are removed/commented out
+'''
 from .check import *
 from .list import *
 from .make import *
