@@ -1,6 +1,7 @@
 import click
 from .maskAtmosPlevel import maskAtmosPlevel_subtool
 from .generate_time_averages.generate_time_averages import generate
+from .regrid_xy import regrid_xy
 
 @click.group(help=click.style(" - access fre app subcommands", fg=(250,154,90)))
 def appCli():
@@ -64,6 +65,19 @@ def gen_time_averages(context, inf, outf, pkg, var, unwgt, avg_type, stddev_type
     start_time=time.perf_counter()
     context.forward(generate)
     print(f'Finished in total time {round(time.perf_counter() - start_time , 2)} second(s)') # need to change to a click.echo, not sure if echo supports f strings
+
+
+
+@appCli.command()
+@click.option("-c", "--config_name",
+              type=str,
+              help="Input rose configuation file file containing configuration field values for running regrid_xy",
+              required=True)
+@click.pass_context
+def regrid_xy(context, config_name):
+    """ regrid netCDF file data from one kind of lat/lon grid to another"""
+    context.forward(regrid_xy)
+
 
 if __name__ == "__main__":
     appCli()

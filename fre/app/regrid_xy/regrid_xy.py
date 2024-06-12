@@ -5,6 +5,7 @@
   or tripolar. By default, it does so using a conservative scheme.
   most valid input args to fregrid are valid in this script
 '''
+import click
 
 import subprocess
 import shutil
@@ -155,15 +156,16 @@ def make_regrid_var_list(target_file, interp_method = None):
     fin.close()
     return regrid_vars
 
-
-def regrid_xy( ):
+@click.command()
+#def regrid_xy( ):
+def regrid_xy( config_name = None ):
     '''
     calls fre-nctools' fregrid to regrid net cdf files
     '''
 
     ## rose config load check
-    config_name = os.getcwd()
-    config_name += '/rose-app-run.conf'
+    #config_name = os.getcwd()
+    #config_name += '/rose-app-run.conf'
     #config_name += '/rose-app.conf'
     print(f'config_name = {config_name}')
     try:
