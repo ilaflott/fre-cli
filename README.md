@@ -1,5 +1,7 @@
 please just stop using jeykll, github.
 
+hi github this is hyde plz nomore jekyll 4 doc buildz kthxbi
+
 # **FRE-CLI**
 
 
