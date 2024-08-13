@@ -2,7 +2,7 @@
 
 FMS Runtime Environment (FRE) CLI developed using Python's Click package
 
-* [Sphinx Page](https://noaa-gfdl.github.io/fre-cli/index.html)
+* [Sphinx Page](https://ilaflott.github.io/fre-cli/index.html)
 * [Project Outline](https://docs.google.com/document/d/19Uc01IPuuIuMtOyAvxXj9Mn6Ivc5Ql6NZ-Q6I8YowRI/edit?usp=sharing)
 
 ![IMG_1076](https://github.com/NOAA-GFDL/fre-cli/assets/98476720/817cabe1-6e3b-4210-9874-b13f601265d6)
