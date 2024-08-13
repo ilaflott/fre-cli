@@ -1,3 +1,7 @@
+![Coverage Badge](https://ilaflott.github.io/fre-cli/_images/cov_badge.svg)
+![Pytest Badge](https://ilaflott.github.io/fre-cli/_images/pytest_badge.svg)
+
+
 please just stop using jeykll, github.
 
 hi github this is hyde plz nomore jekyll 4 doc buildz kthxbi
