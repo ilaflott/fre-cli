@@ -9,15 +9,42 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '>=3.9'
+
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
+
+      - name: Create fre-cli environment
+        run: |
+          # create environment fre-cli will be installed into
+          conda env create -f environment.yml --name fre-cli
+          # try to make sure the right things are in GITHUB_PATH
+          echo $CONDA/envs/fre-cli/bin >> $GITHUB_PATH
+          # install fre-cli w pip
+          $CONDA/envs/fre-cli/bin/python -m pip install --prefix $CONDA/envs/fre-cli .
+        
+      - name: Generate Badges TEST
+        run: |
+          pip install genbadge
+          pytest --junit-xml=pytest_results.xml --config-file=fre/pytest.ini --cov-config=fre/coveragerc --cov-report=xml --cov=fre fre/
+          genbadge coverage -v -i coverage.xml -o docs/cov_badge.svg
+          genbadge tests -v -i pytest_results.xml -o docs/pytest_badge.svg
+
+      - name: Install Sphinx
         run: |
           pip install sphinx renku-sphinx-theme sphinx-rtd-theme          
           pip install --upgrade sphinx-rtd-theme
+
       - name: Sphinx build
         run: |
           sphinx-build docs build
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/test_fork_branch' }}
