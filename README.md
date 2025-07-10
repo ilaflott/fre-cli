@@ -10,7 +10,7 @@
 
 * [Documentation](https://noaa-gfdl.github.io/fre-cli/index.html)
 
-`fre-cli` is the Flexible Runtime Environment (`FRE`) command-line interface (`CLI`). `fre-cli` aims to gives users intuitive and 
+`fre-cli` is the Flexible Runtime Environment (`FRE`) command-line interface (`CLI`). `fre-cli` aims to gies users intuitive and 
 easy-to-understand access to both newly developed, and legacy `FRE` tools via a `click`-driven CLI, delivered as a `conda` package.
 
 
